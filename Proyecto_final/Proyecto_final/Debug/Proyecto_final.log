@@ -1,34 +1,34 @@
 ﻿  Final.cpp
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\include\shader_m.h(44): warning C4101: 'e': variable local sin referencia
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\include\modelanim.h(104): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\include\modelanim.h(520): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(163): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\include\shader_m.h(44): warning C4101: 'e': variable local sin referencia
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\include\modelanim.h(104): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\include\modelanim.h(520): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(164): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(169): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(170): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(762): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(763): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(767): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(768): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(770): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(771): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(779): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(788): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(789): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(794): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(853): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(854): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(858): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(859): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(861): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(862): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(870): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(879): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(880): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(885): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-c:\users\juang\documents\2022-1\c-gráfica\proyecto_final\proyecto_final\proyecto_final\final.cpp(795): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(886): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-  Proyecto_final.vcxproj -> C:\Users\juang\Documents\2022-1\C-Gráfica\Proyecto_Final\Proyecto_final\Debug\Proyecto_final.exe
+  Proyecto_final.vcxproj -> C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\Proyecto_final.exe

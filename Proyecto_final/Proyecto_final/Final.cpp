@@ -75,6 +75,7 @@ recorrido4 = false;
 int estado_carro = 1;
 //Variables jack, temporales-----------------------------------------------------------------------------------------------------
 int estadosJack = 0;
+int estadosPistola=0,estadoPelota = 0;
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
 posY = 0.0f,
@@ -188,6 +189,9 @@ public:
 class pistolaTenis {
 	float x, y, z;
 	float rotacion, presion_gatillo;
+	float rotacionP;
+	float movGatillo,movPx,movPy;
+	
 	glm::vec3 posPelota;
 	Model pistola=Model ("resources/objects/pistola_tenis/pistola.obj");
 	Model gatillo=Model ("resources/objects/pistola_tenis/gatillo.obj");
@@ -198,19 +202,92 @@ public:
 		x = posx;
 		y = posy;
 		z = posz;
-		posPelota = glm::vec3(posx+1.5,posy,posz);
+		posPelota = glm::vec3(posx,posy,posz-1.5);
 	}
 	void dibujar(Shader staticShader) {
-		model = glm::translate(model, glm::vec3(x, y, z));
-		tmp = glm::rotate(model, glm::radians(rotacion), glm::vec3(0.0f, 0.0f, 1.0f));
+		tmp=model = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
+		tmp = glm::rotate(model, glm::radians(-rotacion), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", tmp);
 		pistola.Draw(staticShader);
+		model = glm::translate(tmp, glm::vec3(x + movGatillo+10.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		gatillo.Draw(staticShader);
 		model = glm::mat4(1.0f);
 		model = glm::translate(model,posPelota);
+		model = glm::rotate(model, glm::radians(rotacionP), glm::vec3(0.0f,0.0f,1.0f));
 		staticShader.setMat4("model", model);
 		pelota.Draw(staticShader);
+	}
+	void animar(int* estadoPistola, int* estadoPelota) {
+		switch (*estadoPistola) {
+		case 0:
+			rotacion =0;
+			movGatillo = 0.0f;
+			break;
+		case 1:
+			movGatillo=movGatillo+0.1f;
+			if (movGatillo >=0.5f) {
+				*estadoPistola = 2;
+			}
+			break;
+		case 2:
+			movGatillo=movGatillo-0.1f;
+			if (movGatillo <= 0) {
+				*estadoPistola = 3;
+				*estadoPelota = 1;
+			}
+			break;
+		case 3:
+			rotacion+=5;
+			if (rotacion >=45) {
+				*estadoPistola = 4;
+				
+			}
+			break;
+
+		case 4:
+
+			break;
+		}
+		switch (*estadoPelota) {
+		case 0:
+			posPelota.x = x;
+			posPelota.y = y;
+			movPx = 0;
+			movPy = 0;
+			break;
+		case 1:
+			movPx -= 2;
+			posPelota.x -= 2;
+			if (movPx <= -62.0f)
+				*estadoPelota = 2;
+			break;
+		case 2:
+			movPy += 2;
+			posPelota.y += 2;
+			if (movPy >= 22.0f) {
+				*estadoPelota = 3;
+				movPy = 0;
+			}
+			break;
+		case 3:
+			movPy -= 2;
+			posPelota.y -= 2;
+			if (movPy <= -53.0f) {
+				*estadoPelota = 4;
+				movPx = 0;
+			}
+		case 4:
+			movPx++;
+			posPelota.x++;
+			rotacionP += 5;
+			if (movPx > 15)
+				*estadoPelota = 5;
+			break;
+		case 5:
+			break;
+		}
+
 	}
 };
 void saveFrame(void)
@@ -376,8 +453,10 @@ int main()
 	Model piso("resources/objects/piso_escena/piso.obj");
 	Model arboles("resources/objects/piso_escena/snowtree.obj");
 	Model snowman("resources/objects/piso_escena/snowman.obj");
-
 	Model estructura_inferior("resources/objects/estructura_piso_inferior/estructura.obj");
+	Model mesa_sala("resources/objects/Elementos_sala/mesa.obj");
+	/*
+	
 	Model estructura_inferior2("resources/objects/estructura_pso2/estructura.obj");
 	Model puerta("resources/objects/estructura_pso2/puerta.obj");
 	Model cortina("resources/objects/estructura_pso2/cortina.obj");
@@ -392,7 +471,7 @@ int main()
 	Model sillon1("resources/objects/Elementos_sala/sillon1.obj");
 
 	Model regalos("resources/objects/Elementos_sala/regalos.obj");
-	Model mesa_sala("resources/objects/Elementos_sala/mesa.obj");
+	
 	//--------------garage
 
 	Model estanterias("resources/objects/Elemenos_garage/Estanteria.obj");
@@ -403,8 +482,9 @@ int main()
 	Model ecocina("resources/objects/elementos cocina/ecocina.obj");
 	
 	//Elementos animacion
-	Jack jack(20.0f, 0.0f, 0.0f);
-	pistolaTenis pistola(0.0f, 5.0f, 0.0f);
+	*/
+	Jack jack(-10.0f, 3.0f, 0.0f);
+	pistolaTenis pistola(-10.582f, 34.957f, 158.88f);
 
 
 	ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -441,6 +521,7 @@ int main()
 		//my_input(window);
 		animate();
 		jack.animacion_jack(&estadosJack);
+		pistola.animar(&estadosPistola,&estadoPelota);
 		// render
 		// ------
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -548,12 +629,19 @@ int main()
 		staticShader.setMat4("model", model);
 		arboles.Draw(staticShader);
 		jack.dibujar(staticShader);
-		//pistola.dibujar(staticShader);
-		//-----plantabaja+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		
+		pistola.dibujar(staticShader);
+		//-----plantabaja+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		model = glm::mat4(1.0f);
 		staticShader.setMat4("model", model);
 		estructura_inferior.Draw(staticShader);
+		model = glm::mat4(1.0f);
+		staticShader.setMat4("model", model);
+		//regalos.Draw(staticShader);
+		mesa_sala.Draw(staticShader);
+		//estanterias.Draw(staticShader);
+		/*
+		
 		model = glm::translate(model, glm::vec3(0.298, 79.26f ,0.0f));
 		staticShader.setMat4("model", model);
 		estructura_inferior2.Draw(staticShader);
@@ -567,11 +655,7 @@ int main()
 		
 		
 		
-		model = glm::mat4(1.0f);
-		staticShader.setMat4("model", model);
-		regalos.Draw(staticShader);
-		mesa_sala.Draw(staticShader);
-		estanterias.Draw(staticShader);
+		
 		//carro.Draw(staticShader);
 
 
@@ -637,7 +721,7 @@ int main()
 		model = glm::translate(model, glm::vec3(-62.587f, 156.039f, 0.0f));
 		staticShader.setMat4("model", model);
 		techo.Draw(staticShader);
-
+		*/
 		//-------------------------------------------------------------------------------------
 		// draw skybox as last
 		// -------------------
@@ -685,7 +769,14 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		if (estadosJack == 5)
 			estadosJack = 0;
 	}
-	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) {
+		if (estadosPistola == 0)
+			estadosPistola = 1;
+		else {
+			estadosPistola = 0;
+			estadoPelota = 0;
+		}
+	}
 
 	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
 	
