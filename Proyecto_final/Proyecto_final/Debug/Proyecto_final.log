@@ -12,21 +12,24 @@ c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\
           [
               T=float
           ]
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(853): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(854): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(858): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(859): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(861): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(862): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(870): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(879): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(880): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(885): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(376): warning C4305: '+=': truncamiento de 'double' a 'float'
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(378): warning C4305: '+=': truncamiento de 'double' a 'float'
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(584): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(956): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(957): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(961): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(962): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(964): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(965): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(973): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(982): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(983): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(988): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(886): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(989): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float

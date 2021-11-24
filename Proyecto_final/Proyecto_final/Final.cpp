@@ -75,7 +75,7 @@ recorrido4 = false;
 int estado_carro = 1;
 //Variables jack, temporales-----------------------------------------------------------------------------------------------------
 int estadosJack = 0;
-int estadosPistola=0,estadoPelota = 0;
+int estadosPistola=0,estadoPelota,estadoCarro = 0;
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
 posY = 0.0f,
@@ -290,6 +290,102 @@ public:
 
 	}
 };
+
+class carro
+{
+public:
+	float posx, posy, posz,movz,movx,movy,rot,roty;
+	float rotLlanta;
+	glm::vec3 cajaPosition;
+	glm::mat4 model, tmp;
+	Model cuerpo = Model("resources/objects/carro/cuerpo.obj");
+	Model rueda = Model("resources/objects/carro/llanata.obj");
+	carro(float x, float y, float z) {
+		posx = x;
+		posy = y;
+		posz = z;
+
+	}
+
+	void dibujar(Shader staticShader) {
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(posx+movx, posy+movy, posz+movz));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(roty), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		cuerpo.Draw(staticShader);
+
+		tmp = glm::translate(model, glm::vec3(8.539f,0.0f,-4.715f));
+		tmp = glm::rotate(tmp, glm::radians(rotLlanta), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", tmp);
+		rueda.Draw(staticShader);
+
+		tmp = glm::translate(model, glm::vec3(8.539f, 0.0f, 4.715f));
+		tmp = glm::rotate(tmp, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		tmp = glm::rotate(tmp, glm::radians(-rotLlanta), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", tmp);
+		rueda.Draw(staticShader);
+
+		tmp = glm::translate(model, glm::vec3(33.193f, 0.0f, -4.715f));
+		tmp = glm::rotate(tmp, glm::radians(rotLlanta), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", tmp);
+		rueda.Draw(staticShader);
+
+		tmp = glm::translate(model, glm::vec3(33.193f, 0.0f, 4.715f));
+		tmp = glm::rotate(tmp, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		tmp = glm::rotate(tmp, glm::radians(-rotLlanta), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", tmp);
+		rueda.Draw(staticShader);
+		
+	}
+	void animacion(int *estadosCarro) {
+		switch (*estadosCarro) {
+		case 0:
+			movx = 0;
+			movz = 0;
+			movy = 0;
+			rot = 0;
+			roty = 0;
+			break;
+
+		case 1:
+			rotLlanta++;
+			movx -= 5;
+			
+			if (movx <= -130) {
+				*estadosCarro = 2;
+				rot = 90;
+			}
+			break;
+		case 2:
+			rotLlanta--;
+			movz -= 5;
+
+			if (movz <= -286) {
+				*estadosCarro = 3;
+			}
+			break;
+		case 3:
+			rotLlanta--;
+			movz += 5;
+
+			if (movz >= 164) {
+				*estadosCarro = 4;
+			}
+			break;
+		case 4:
+			movz += 2.63;
+			movy -= 1;
+			roty += 4.7368;
+			if (movy <= -38)
+				*estadosCarro = 5;
+			break;
+		}
+		if (*estadosCarro==1||*estadosCarro==4) {
+			rotLlanta+=5;
+		}else
+			rotLlanta -= 5;
+	}
+};
 void saveFrame(void)
 {
 	//printf("frameindex %d\n", FrameIndex);
@@ -485,7 +581,7 @@ int main()
 	*/
 	Jack jack(-10.0f, 3.0f, 0.0f);
 	pistolaTenis pistola(-10.582f, 34.957f, 158.88f);
-
+	carro car(-11.497,84.0,131.0);
 
 	ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	animacionPersonaje.initShaders(animShader.ID);
@@ -516,12 +612,11 @@ int main()
 		// --------------------
 		lastFrame = SDL_GetTicks();
 
-		// input
-		// -----
-		//my_input(window);
+
 		animate();
 		jack.animacion_jack(&estadosJack);
 		pistola.animar(&estadosPistola,&estadoPelota);
+		car.animacion(&estadoCarro);
 		// render
 		// ------
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -631,17 +726,19 @@ int main()
 		jack.dibujar(staticShader);
 		
 		pistola.dibujar(staticShader);
+
+		car.dibujar(staticShader);
 		//-----plantabaja+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		
+		//estanterias.Draw(staticShader);
+		/*
 		model = glm::mat4(1.0f);
 		staticShader.setMat4("model", model);
 		estructura_inferior.Draw(staticShader);
 		model = glm::mat4(1.0f);
 		staticShader.setMat4("model", model);
-		//regalos.Draw(staticShader);
+		regalos.Draw(staticShader);
 		mesa_sala.Draw(staticShader);
-		//estanterias.Draw(staticShader);
-		/*
-		
 		model = glm::translate(model, glm::vec3(0.298, 79.26f ,0.0f));
 		staticShader.setMat4("model", model);
 		estructura_inferior2.Draw(staticShader);
@@ -778,7 +875,13 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		}
 	}
 
-	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) {
+		if (estadoCarro == 0)
+			estadoCarro = 1;
+		else {
+			estadoCarro = 0;
+		}
+	}
 	
 	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
 	
