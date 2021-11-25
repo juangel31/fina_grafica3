@@ -4,6 +4,8 @@
 /*------------- Alumno:Juan Dario Villa Vega---------------*/
 /*------------- No. Cuenta:315015401        ---------------*/
 #include <Windows.h>
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
 
 #include <glad/glad.h>
 #include <glfw3.h>	//main
@@ -26,7 +28,8 @@
 #include <model.h>
 #include <Skybox.h>
 #include <iostream>
-//#pragma comment(lib, "winmm.lib")
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -295,7 +298,7 @@ public:
 	float posx, posy, posz;
 	float rotacionPiernas,rotacionTorzo,rotacionBrazoIx,rotacionBrazoDx, rotacionBrazoIy, rotacionBrazoDy,rotacionCabeza,rot;
 	float dz, dx;
-	int edoPies, edoTraslacion, edoSaludo,edobrazo;
+	int edoPies, edoTraslacion, edoSaludo,edobrazo,contador;
 	glm::vec3 traslacion;
 	glm::mat4 model, tmp;
 	Model cabeza = Model("resources/objects/santa/cabeza.obj");
@@ -354,12 +357,13 @@ public:
 		brazoi.Draw(staticShader);
 	}
 	void animacion() {
-		/*switch (edoTraslacion) {
+		switch (edoTraslacion) {
 		case 0:
 			dx++;
 			if (dx > 100) {
-				edoTraslacion = 1;
-				rot =+ 90;
+				edoTraslacion = 4;
+				
+				edoSaludo = 3;
 			}
 			break;
 		case 1:
@@ -387,7 +391,7 @@ public:
 
 			break;
 		}
-		*/
+		
 		//movimientos piernas
 		if (edoPies == 0&& edoTraslacion!=4) {
 			rotacionPiernas+=2;
@@ -407,23 +411,58 @@ public:
 			case 0:
 				rotacionBrazoDx = -45;
 				rotacionBrazoIx = -45;
+				rotacionTorzo = 0;
+				break;
+			case 1:
+				rotacionTorzo += 0.5;
+				rotacionBrazoDx += 0.7;
+				if (rotacionTorzo >= 20)
+					edoSaludo = 2;
+				break;
+			case 2:
+				rotacionTorzo -= 0.5;
+				rotacionBrazoDx -= 0.7;
+				if (rotacionTorzo <= -20) {
+					edoSaludo = 1;
+					contador++;
+					if (contador == 2) {
+						edoSaludo = 4;
+						rotacionTorzo =0;
+					}
+				}
+				break;
+			case 3:
+				rotacionBrazoDx += 5;
+				if (rotacionBrazoDx >= 30)
+					edoSaludo = 1;
+				break;
+			case 4:
+				rotacionBrazoDx -= 5;
+				if (rotacionBrazoDx <= -45) {
+
+					edoSaludo = 0;
+					edoTraslacion = 1;
+					rot = +90;
+				}
 				break;
 		default:
 			break;
 		}
+		
 		///Movimientos brazos al caminar
 		if (edoSaludo == 0) {
 			if (edobrazo == 0) {
-				//rotacionBrazoDy += 2;
+				rotacionBrazoDy += 2;
 				rotacionBrazoIy += 2;
 				if (rotacionBrazoIy >= 45)
 					edobrazo = 1;
-			}else
-				//rotacionBrazoDy -= 2;
+			}
+			else {
+				rotacionBrazoDy -= 2;
 				rotacionBrazoIy -= 2;
-				if (rotacionBrazoDy <= -45)
+				if (rotacionBrazoIy <= -45)
 					edobrazo = 0;
-			
+			}
 		}
 		else {
 			rotacionBrazoDy = 0;
@@ -508,15 +547,15 @@ public:
 			rotLlanta--;
 			movz += 5;
 
-			if (movz >= 164) {
+			if (movz >= 0) {
 				*estadosCarro = 4;
 			}
 			break;
 		case 4:
-			movz += 2.63;
+			movz += 1.98;
 			movy -= 1;
 			roty += 4.7368;
-			if (movy <= -38)
+			if (movy <= -35)
 				*estadosCarro = 5;
 			break;
 		}
@@ -683,7 +722,7 @@ int main()
 	// --------------------
 	skyboxShader.use();
 	skyboxShader.setInt("skybox", 0);
-
+	
 	// load models
 	// -----------sala
 	Model piso("resources/objects/piso_escena/piso.obj");
@@ -691,7 +730,7 @@ int main()
 	Model snowman("resources/objects/piso_escena/snowman.obj");
 	Model estructura_inferior("resources/objects/estructura_piso_inferior/estructura.obj");
 	Model mesa_sala("resources/objects/Elementos_sala/mesa.obj");
-	/*
+	
 	
 	Model estructura_inferior2("resources/objects/estructura_pso2/estructura.obj");
 	Model puerta("resources/objects/estructura_pso2/puerta.obj");
@@ -718,17 +757,14 @@ int main()
 	Model ecocina("resources/objects/elementos cocina/ecocina.obj");
 	
 	//Elementos animacion
-	*/
+	
 	Jack jack(-10.0f, 3.0f, 0.0f);
 	pistolaTenis pistola(-10.582f, 34.957f, 158.88f);
 	carro car(-11.497,84.0,131.0);
-	Santa santa(0.0f, 5.0f, 0.0f);
-	ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
-	animacionPersonaje.initShaders(animShader.ID);
+	Santa santa(-65.0f, 9.0f, -118.0f);
 
-	ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
-	ninja.initShaders(animShader.ID);
-
+	//musica
+	PlaySound(TEXT("jingle-bell-rock-lyrics.wav"), NULL, SND_FILENAME|SND_LOOP | SND_ASYNC); // Background music
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
 	{
@@ -824,23 +860,7 @@ int main()
 		// Personaje Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
 		//Remember to activate the shader with the animation
-		animShader.use();
-		animShader.setMat4("projection", projection);
-		animShader.setMat4("view", view);
 
-		animShader.setVec3("material.specular", glm::vec3(0.5f));
-		animShader.setFloat("material.shininess", 32.0f);
-		animShader.setVec3("light.ambient", ambientColor);
-		animShader.setVec3("light.diffuse", diffuseColor);
-		animShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-		animShader.setVec3("light.direction", lightDirection);
-		animShader.setVec3("viewPos", camera.Position);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(1.2f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		animShader.setMat4("model", model);
-		animacionPersonaje.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
@@ -850,11 +870,20 @@ int main()
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
+		
+		
 		staticShader.use();
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
 
+		jack.dibujar(staticShader);
 
+		pistola.dibujar(staticShader);
+
+		car.dibujar(staticShader);
+		santa.dibujar(staticShader);
+
+		
 		model = glm::mat4(1.0f);
 		model = glm::translate(model,glm::vec3(0.0f,-2.0f,0.0f));
 		staticShader.setMat4("model", model);
@@ -864,16 +893,9 @@ int main()
 		model = glm::translate(model, glm::vec3(-400.0f, 0.0f, 0.00f));
 		staticShader.setMat4("model", model);
 		arboles.Draw(staticShader);
-		jack.dibujar(staticShader);
 		
-		pistola.dibujar(staticShader);
-
-		car.dibujar(staticShader);
-		santa.dibujar(staticShader);
+		
 		//-----plantabaja+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		
-		//estanterias.Draw(staticShader);
-		/*
 		model = glm::mat4(1.0f);
 		staticShader.setMat4("model", model);
 		estructura_inferior.Draw(staticShader);
@@ -881,6 +903,8 @@ int main()
 		staticShader.setMat4("model", model);
 		regalos.Draw(staticShader);
 		mesa_sala.Draw(staticShader);
+		estanterias.Draw(staticShader);
+		
 		model = glm::translate(model, glm::vec3(0.298, 79.26f ,0.0f));
 		staticShader.setMat4("model", model);
 		estructura_inferior2.Draw(staticShader);
@@ -960,7 +984,7 @@ int main()
 		model = glm::translate(model, glm::vec3(-62.587f, 156.039f, 0.0f));
 		staticShader.setMat4("model", model);
 		techo.Draw(staticShader);
-		*/
+		
 		//-------------------------------------------------------------------------------------
 		// draw skybox as last
 		// -------------------
