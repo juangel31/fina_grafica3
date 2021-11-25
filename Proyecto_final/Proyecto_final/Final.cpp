@@ -26,7 +26,6 @@
 #include <model.h>
 #include <Skybox.h>
 #include <iostream>
-
 //#pragma comment(lib, "winmm.lib")
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -290,7 +289,148 @@ public:
 
 	}
 };
+class	Santa
+{
+public:
+	float posx, posy, posz;
+	float rotacionPiernas,rotacionTorzo,rotacionBrazoIx,rotacionBrazoDx, rotacionBrazoIy, rotacionBrazoDy,rotacionCabeza,rot;
+	float dz, dx;
+	int edoPies, edoTraslacion, edoSaludo,edobrazo;
+	glm::vec3 traslacion;
+	glm::mat4 model, tmp;
+	Model cabeza = Model("resources/objects/santa/cabeza.obj");
+	Model torzo = Model("resources/objects/santa/torzo.obj");
+	Model pie = Model("resources/objects/santa/pie.obj");
+	Model cintura= Model("resources/objects/santa/cintura.obj");
+	Model brazoi= Model("resources/objects/santa/brazo_i.obj");
+	Model brazod= Model("resources/objects/santa/brazo_d.obj");
+	
+	
+	Santa(float x, float y, float z) {
+		posx = x;
+		posy = y;
+		posz = z;
+		
+	}
 
+	void dibujar(Shader staticShader) {
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(posx+dx, posy, posz+dz));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		cintura.Draw(staticShader);//cintura base animacion inferior
+
+		tmp= glm::translate(model, glm::vec3(0.64f, 0.488f, 1.571f));
+		tmp = glm::rotate(tmp, glm::radians(rotacionPiernas), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", tmp);
+		pie.Draw(staticShader);
+
+		tmp = glm::translate(model, glm::vec3(0.64f, 0.488f, -1.571f));
+		tmp = glm::rotate(tmp, glm::radians(-rotacionPiernas), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", tmp);
+		pie.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(posx+dx, posy, posz+dz));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model= glm::translate(model, glm::vec3(0.0f, 3.24f, 0.0f));//Ubicacion torzo
+		model = glm::rotate(model, glm::radians(rotacionTorzo), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		torzo.Draw(staticShader);
+		
+		tmp = glm::translate(model, glm::vec3(0.0f, 5.73f, 0.43f));//Ubicacion cabeza
+		tmp = glm::rotate(tmp, glm::radians(rotacionCabeza), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", tmp);
+		cabeza.Draw(staticShader);
+
+		tmp = glm::translate(model, glm::vec3(0.0f, 4.773f, -1.05f));//Ubicacion brazo I
+		tmp = glm::rotate(tmp, glm::radians(rotacionBrazoDx), glm::vec3(1.0f, 0.0f, 0.0f));
+		tmp = glm::rotate(tmp, glm::radians(rotacionBrazoDy), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", tmp);
+		brazod.Draw(staticShader);
+
+		tmp = glm::translate(model, glm::vec3(0.0f, 4.773f, +1.05f));//Ubicacion brazo I
+		tmp = glm::rotate(tmp, glm::radians(-rotacionBrazoIx), glm::vec3(1.0f, 0.0f, 0.0f));
+		tmp = glm::rotate(tmp, glm::radians(rotacionBrazoIy), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", tmp);
+		brazoi.Draw(staticShader);
+	}
+	void animacion() {
+		/*switch (edoTraslacion) {
+		case 0:
+			dx++;
+			if (dx > 100) {
+				edoTraslacion = 1;
+				rot =+ 90;
+			}
+			break;
+		case 1:
+			dz--;
+			if (dz < -100) {
+				edoTraslacion = 2;
+				rot += 90;
+			}
+			break;
+		case 2:
+			dx--;
+			if (dx <= 0) {
+				edoTraslacion = 3;
+				rot += 90;
+			}
+			break;
+		case 3:
+			dz++;
+			if (dz >= 0) {
+				edoTraslacion = 0;
+				rot +=90;
+			}
+			break;
+		case 4://estado espera
+
+			break;
+		}
+		*/
+		//movimientos piernas
+		if (edoPies == 0&& edoTraslacion!=4) {
+			rotacionPiernas+=2;
+			if (rotacionPiernas > 45)
+				edoPies = 1;
+		}else {
+			if (edoTraslacion != 4) {
+				rotacionPiernas -= 2;
+				if (rotacionPiernas < -45)
+					edoPies = 0;
+			}
+			else
+				rotacionPiernas = 0;
+		}
+		switch (edoSaludo)
+		{
+			case 0:
+				rotacionBrazoDx = -45;
+				rotacionBrazoIx = -45;
+				break;
+		default:
+			break;
+		}
+		///Movimientos brazos al caminar
+		if (edoSaludo == 0) {
+			if (edobrazo == 0) {
+				//rotacionBrazoDy += 2;
+				rotacionBrazoIy += 2;
+				if (rotacionBrazoIy >= 45)
+					edobrazo = 1;
+			}else
+				//rotacionBrazoDy -= 2;
+				rotacionBrazoIy -= 2;
+				if (rotacionBrazoDy <= -45)
+					edobrazo = 0;
+			
+		}
+		else {
+			rotacionBrazoDy = 0;
+			rotacionBrazoIy = 0;
+		}
+	}
+};
 class carro
 {
 public:
@@ -582,7 +722,7 @@ int main()
 	Jack jack(-10.0f, 3.0f, 0.0f);
 	pistolaTenis pistola(-10.582f, 34.957f, 158.88f);
 	carro car(-11.497,84.0,131.0);
-
+	Santa santa(0.0f, 5.0f, 0.0f);
 	ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	animacionPersonaje.initShaders(animShader.ID);
 
@@ -617,6 +757,7 @@ int main()
 		jack.animacion_jack(&estadosJack);
 		pistola.animar(&estadosPistola,&estadoPelota);
 		car.animacion(&estadoCarro);
+		santa.animacion();
 		// render
 		// ------
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -728,6 +869,7 @@ int main()
 		pistola.dibujar(staticShader);
 
 		car.dibujar(staticShader);
+		santa.dibujar(staticShader);
 		//-----plantabaja+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		
 		//estanterias.Draw(staticShader);
