@@ -156,20 +156,20 @@ public:
 			rotacion_tapa = 0.0f;
 			break;
 		case 1:
-			rotacion_manivela = rotacion_manivela + 5;
+			rotacion_manivela = rotacion_manivela + 15;
 			if (rotacion_manivela >= 360) {
 				rotacion_manivela = 0;
 				*estadosJack = 2;
 			}
 			break;
 		case 2:
-			cajaPosition.x = cajaPosition.x + 0.5;
+			cajaPosition.x = cajaPosition.x + 1;
 			if (cajaPosition.x >= posx + 4) {
 				*estadosJack = 3;
 			}
 			break;
 		case 3:
-			cajaPosition.x = cajaPosition.x - 0.5;
+			cajaPosition.x = cajaPosition.x - 1;
 			if (cajaPosition.x <= posx - 4) {
 				*estadosJack = 4;
 			}
@@ -227,20 +227,20 @@ public:
 			movGatillo = 0.0f;
 			break;
 		case 1:
-			movGatillo=movGatillo+0.1f;
+			movGatillo=movGatillo+0.2f;
 			if (movGatillo >=0.5f) {
 				*estadoPistola = 2;
 			}
 			break;
 		case 2:
-			movGatillo=movGatillo-0.1f;
+			movGatillo=movGatillo-0.2f;
 			if (movGatillo <= 0) {
 				*estadoPistola = 3;
 				*estadoPelota = 1;
 			}
 			break;
 		case 3:
-			rotacion+=5;
+			rotacion+=7;
 			if (rotacion >=45) {
 				*estadoPistola = 4;
 				
@@ -283,7 +283,7 @@ public:
 			movPx++;
 			posPelota.x++;
 			rotacionP += 5;
-			if (movPx > 15)
+			if (movPx > -10)
 				*estadoPelota = 5;
 			break;
 		case 5:
@@ -359,7 +359,7 @@ public:
 	void animacion() {
 		switch (edoTraslacion) {
 		case 0:
-			dx++;
+			dx+=5;
 			if (dx > 100) {
 				edoTraslacion = 4;
 				
@@ -367,21 +367,21 @@ public:
 			}
 			break;
 		case 1:
-			dz--;
+			dz-=5;
 			if (dz < -100) {
 				edoTraslacion = 2;
 				rot += 90;
 			}
 			break;
 		case 2:
-			dx--;
+			dx-=5;
 			if (dx <= 0) {
 				edoTraslacion = 3;
 				rot += 90;
 			}
 			break;
 		case 3:
-			dz++;
+			dz+=5;
 			if (dz >= 0) {
 				edoTraslacion = 0;
 				rot +=90;
@@ -394,12 +394,12 @@ public:
 		
 		//movimientos piernas
 		if (edoPies == 0&& edoTraslacion!=4) {
-			rotacionPiernas+=2;
+			rotacionPiernas+=4;
 			if (rotacionPiernas > 45)
 				edoPies = 1;
 		}else {
 			if (edoTraslacion != 4) {
-				rotacionPiernas -= 2;
+				rotacionPiernas -= 4;
 				if (rotacionPiernas < -45)
 					edoPies = 0;
 			}
@@ -414,20 +414,21 @@ public:
 				rotacionTorzo = 0;
 				break;
 			case 1:
-				rotacionTorzo += 0.5;
-				rotacionBrazoDx += 0.7;
+				rotacionTorzo += 2;
+				rotacionBrazoDx += 2.5;
 				if (rotacionTorzo >= 20)
 					edoSaludo = 2;
 				break;
 			case 2:
-				rotacionTorzo -= 0.5;
-				rotacionBrazoDx -= 0.7;
+				rotacionTorzo -= 2;
+				rotacionBrazoDx -= 2.5;
 				if (rotacionTorzo <= -20) {
 					edoSaludo = 1;
 					contador++;
 					if (contador == 2) {
 						edoSaludo = 4;
 						rotacionTorzo =0;
+						contador = 0;
 					}
 				}
 				break;
@@ -905,7 +906,7 @@ int main()
 		mesa_sala.Draw(staticShader);
 		estanterias.Draw(staticShader);
 		
-		model = glm::translate(model, glm::vec3(0.298, 79.26f ,0.0f));
+		model = glm::translate(model, glm::vec3(0.298, 76.26f ,0.0f));
 		staticShader.setMat4("model", model);
 		estructura_inferior2.Draw(staticShader);
 		model = glm::mat4(1.0f);

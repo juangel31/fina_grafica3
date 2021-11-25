@@ -2,53 +2,26 @@
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\include\shader_m.h(44): warning C4101: 'e': variable local sin referencia
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\include\modelanim.h(104): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\include\modelanim.h(520): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(166): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(172): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(418): warning C4305: '+=': truncamiento de 'double' a 'float'
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(424): warning C4305: '-=': truncamiento de 'double' a 'float'
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(555): warning C4305: '+=': truncamiento de 'double' a 'float'
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(557): warning C4305: '+=': truncamiento de 'double' a 'float'
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(763): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1122): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(556): warning C4305: '+=': truncamiento de 'double' a 'float'
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(558): warning C4305: '+=': truncamiento de 'double' a 'float'
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(764): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1123): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1127): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1124): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1128): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1130): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1129): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1131): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1139): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1148): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1132): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1140): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1149): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1154): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1150): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1155): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-glfw3.lib(context.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(context.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(init.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(init.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(input.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(input.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(monitor.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(monitor.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(vulkan.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(vulkan.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(window.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(window.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(win32_init.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(win32_init.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(win32_joystick.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(win32_joystick.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(win32_monitor.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(win32_monitor.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(win32_time.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(win32_time.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(win32_thread.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(win32_thread.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(win32_window.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(win32_window.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(wgl_context.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(wgl_context.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(egl_context.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(egl_context.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
-glfw3.lib(osmesa_context.obj) : warning LNK4099: no se encontr¾ PDB 'glfw.pdb' con 'glfw3.lib(osmesa_context.obj)' o en 'C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\glfw.pdb'; se vincularß el objeto sin tener en cuenta informaci¾n de depuraci¾n
+c:\users\juang\documents\2022-1\c-grafica\p_final\proyecto_final\proyecto_final\final.cpp(1156): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
   Proyecto_final.vcxproj -> C:\Users\juang\Documents\2022-1\C-Grafica\P_final\Proyecto_final\Debug\Proyecto_final.exe
